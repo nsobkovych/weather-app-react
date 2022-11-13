@@ -1,13 +1,177 @@
+html,
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: Nunito, Roboto, sans-serif;
+}
+
+img {
+  filter: invert(99%) sepia(0%) saturate(553%) hue-rotate(32deg)
+    brightness(121%) contrast(100%);
+}
+
+a {
+  color: #646fd3;
+}
+
+a:hover {
+  color: #4863b4;
+}
+
+.w-wrapper {
+  background: linear-gradient(120deg, #7074e1 0%, #4863b4 100%);
+  border: none;
+  color: #fff;
+}
+
+.w-search-section {
+  border-bottom: none;
+}
+
+#q {
+  border-color: #fff;
+}
+
+#search-btn,
+#search-btn:active,
+#search-btn:focus {
+  background-color: transparent;
+  border-color: #fff;
+  color: rgba(255, 255, 255, 1);
+}
+
+#search-btn:focus {
+  box-shadow: none;
+}
+
+#search-btn:hover {
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+.city {
+  font-weight: 700;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 48;
+}
+
+.w-image img {
+  height: 5em;
+  width: 5em;
+}
+
+.w-degree {
+  font-weight: 400;
+}
+
+.divider {
+  border-left: solid 1px #fff;
+  display: inline-block;
+  height: 36px;
+  margin: 0 4px;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none !important;
+}
+
+.btn-degree,
+.btn-degree:active,
+.btn-degree:focus {
+  color: rgba(255, 255, 255, 1);
+  display: inline-block;
+  padding: 6px;
+  text-decoration: none;
+}
+
+.btn-degree:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.btn-celsius,
+.btn-fahrenheit {
+  font-weight: 200;
+}
+
+.btn-active {
+  font-weight: 600;
+}
+
+.w-type {
+  display: inline-block;
+}
+
+.w-type::first-letter {
+  text-transform: uppercase;
+}
+
+.w-details {
+  text-align: start;
+}
+
+.badge-custom {
+  font-weight: 600;
+  font-size: 0.8em;
+}
+
+.badge-custom:first-child {
+  padding-left: 0;
+}
+
+.badge-custom img {
+  height: 1.1em;
+  width: 1.1em;
+}
+
+.badge-icon {
+  font-size: 1em;
+}
+
+.w-forecast {
+  border-top: none;
+}
+
+.w-forecast-image {
+  margin: 8px 0;
+}
+
+.w-forecast-image img {
+  height: 2em;
+  width: 2em;
+}
+
+.w-forecast-temperature {
+  font-size: 0.8em;
+}
+
+.w-forecast-temperature span {
+  display: inline-block;
+}
+
+.w-forecast-temperature-max {
+  font-weight: 600;
+  padding-right: 0.3em;
+}
+
+.w-forecast-temperature-min {
+  font-weight: 200;
+}
+
+@media (max-width: 575.98px) {
+  .w-forecast-temperature {
+    font-size: 12px;
+  }
+  .w-forecast-temperature-max {
+    padding-right: 0;
+  }
 }
