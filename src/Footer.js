@@ -4,7 +4,7 @@ export default function Footer() {
       <footer className="mt-3">
         <small>
           <a
-            href="https://github.com/nsobkovych/weather-forecast.git"
+            href="https://github.com/nsobkovych/weather-app-react"
             target="_blank"
             rel="noreferrer"
           >
