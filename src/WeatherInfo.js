@@ -1,5 +1,7 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
+import WeatherIcon from "./WeatherIcon";
+import { WiStrongWind, WiCloud, WiRaindrop } from "react-icons/wi";
 
 export default function WeatherInfo(props) {
   return (
@@ -15,12 +17,10 @@ export default function WeatherInfo(props) {
           <div className="col my-3 my-sm-0">
             <div className="row row-cols-1 row-cols-sm-2">
               <div className="col align-self-end text-sm-end mb-3 mb-sm-0">
-                <div className="w-image">
-                  <img
-                    src="img/01d_clear_day_FILL0_wght400_GRAD0_opsz48.svg"
-                    alt="Weather icon"
-                  />
-                </div>
+                <WeatherIcon
+                  icon={props.data.icon}
+                  alt={props.data.mainDescription}
+                />
               </div>
               <div className="col text-sm-start ps-sm-0">
                 <div className="degree d-flex align-items-start justify-content-center justify-content-sm-start">
@@ -49,22 +49,19 @@ export default function WeatherInfo(props) {
             </div>
           </div>
         </div>
-        <div className="w-details mt-5 d-flex justify-content-center justify-content-sm-start">
+        <div className="w-details mt-4 d-flex justify-content-center justify-content-sm-start">
           <span className="badge badge-custom bg-transparent">
-            <img src="img/air_FILL0_wght400_GRAD0_opsz48.svg" alt="I" />
+            <WiStrongWind />
             <span className="w-wind">
               {Math.round(props.data.windSpeed)}m/s
             </span>
           </span>
           <span className="badge badge-custom bg-transparent">
-            <img src="img/03d_cloudy_FILL0_wght400_GRAD0_opsz48.svg" alt="I" />
+            <WiCloud />
             <span className="w-clouds">{props.data.clouds}%</span>
           </span>
           <span className="badge badge-custom bg-transparent">
-            <img
-              src="img/humidity_low_FILL0_wght400_GRAD0_opsz48.svg"
-              alt="I"
-            />
+            <WiRaindrop />
             <span className="w-humidity">{props.data.humidity}%</span>
           </span>
         </div>

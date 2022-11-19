@@ -17,7 +17,7 @@ export default function Weather(props) {
       clouds: response.data.clouds.all,
       humidity: response.data.main.humidity,
       windSpeed: response.data.wind.speed,
-      iconUrl: `http://openweathermap.org/img/wn/01d@2x.png`,
+      icon: response.data.weather[0].icon,
       coords: response.data.coord,
       city: response.data.name,
       country: response.data.sys.country,
