@@ -1,4 +1,5 @@
 import React from "react";
+import WeatherTemperature from "./WeatherTemperature";
 import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
 import { WiStrongWind, WiCloud, WiRaindrop } from "react-icons/wi";
@@ -23,27 +24,7 @@ export default function WeatherInfo(props) {
                 />
               </div>
               <div className="col text-sm-start ps-sm-0">
-                <div className="degree d-flex align-items-start justify-content-center justify-content-sm-start">
-                  <span
-                    id="w-degree"
-                    className="w-degree display-3 flex-sm-fill"
-                  >
-                    {props.data.temperature}
-                  </span>
-                  <button
-                    type="button"
-                    className="btn btn-link btn-degree btn-active flex-sm-fill btn-celsius"
-                  >
-                    °C
-                  </button>
-                  <span className="divider"></span>
-                  <button
-                    type="button"
-                    className="btn btn-link btn-degree flex-sm-fill btn-fahrenheit"
-                  >
-                    °F
-                  </button>
-                </div>
+                <WeatherTemperature celsius={props.data.temperature} />
                 <small className="w-type">{props.data.description}</small>
               </div>
             </div>
