@@ -3,14 +3,14 @@ export default function Footer() {
     <div className="Footer">
       <footer className="mt-3">
         <small>
+          The project was coded by Sobkovych Nataliya and is{" "}
           <a
             href="https://github.com/nsobkovych/weather-app-react"
             target="_blank"
             rel="noreferrer"
           >
-            Source code of the project
+            open-sourced on GitHub
           </a>
-          , by Sobkovych Nataliya
         </small>
       </footer>
     </div>
