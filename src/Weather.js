@@ -5,7 +5,8 @@ import "./Weather.css";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
-  
+  let [city, setCity] = useState(props.city);
+
   function handleResponse(response) {
     setWeatherData({
       ready: true,
@@ -23,6 +24,49 @@ export default function Weather(props) {
     });
   }
 
+  function search() {
+    const apiKey = "5ca7191e7c223ac438b06699f46c25b5";
+    let weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`;
+
+    axios
+      .get(`${weatherApiUrl}&appid=${apiKey}`)
+      .then(handleResponse)
+      .catch(function (error) {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response);
+          // console.log(error.response.data);
+          // console.log(error.response.status);
+          // console.log(error.response.headers);
+          alert(error.response.data.message);
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log("Error", error.message);
+        }
+        // console.log(error.config);
+      });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (city.length !== 0) {
+      search();
+    } else {
+      alert("Enter a city");
+    }
+  }
+
+  function updateCity(e) {
+    setCity(e.target.value);
+  }
+
   if (weatherData.ready) {
     return (
       <div className="Weather">
@@ -30,7 +74,11 @@ export default function Weather(props) {
           <div className="col col-lg-8 col-xxl-6">
             <div className="card w-wrapper">
               <div className="card-header py-4 bg-transparent w-search-section">
-                <form role="search" name="search-city-form">
+                <form
+                  role="search"
+                  name="search-city-form"
+                  onSubmit={handleSubmit}
+                >
                   <div className="input-group">
                     <input
                       type="search"
@@ -41,6 +89,7 @@ export default function Weather(props) {
                       aria-label="What is your city"
                       aria-describedby="search-btn"
                       autoComplete="off"
+                      onChange={updateCity}
                     />
                     <button
                       className="btn btn-outline-secondary"
@@ -53,7 +102,9 @@ export default function Weather(props) {
                   </div>
                 </form>
               </div>
+
               <WeatherInfo data={weatherData} />
+
               <div className="card-footer w-forecast text-center py-4 bg-transparent"></div>
             </div>
           </div>
@@ -61,33 +112,7 @@ export default function Weather(props) {
       </div>
     );
   } else {
-    const apiKey = "5ca7191e7c223ac438b06699f46c25b5";
-    let weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.cityName}&units=metric`;
-
-    axios
-    .get(`${weatherApiUrl}&appid=${apiKey}`)
-    .then(handleResponse)
-    .catch(function (error) {
-      if (error.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
-        console.log(error.response);
-        // console.log(error.response.data);
-        // console.log(error.response.status);
-        // console.log(error.response.headers);
-        alert(error.response.data.message);
-      } else if (error.request) {
-        // The request was made but no response was received
-        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-        // http.ClientRequest in node.js
-        console.log(error.request);
-      } else {
-        // Something happened in setting up the request that triggered an Error
-        console.log("Error", error.message);
-      }
-      // console.log(error.config);
-    });
-
-    return "Loading..."
+    search();
+    return "Loading...";
   }
 }
