@@ -6,23 +6,32 @@ import "./WeatherForecast.css";
 export default function WeatherForecast(props) {
   let [loaded, setLoaded] = useState(false);
   let [forecast, setForecast] = useState(null);
+  let [city, setCity] = useState(null);
 
   function displayForecast(data) {
-    setForecast(data);
+    setForecast(data.list);
+    setCity(data.city);
     setLoaded(true);
   }
 
   if (loaded) {
+    console.log("forecast", forecast);
     return (
       <div className="WeatherForecast">
         <div class="card-footer WeatherForecast-inner py-4 bg-transparent">
           <div class="row">
-            <div class="col">
-              <WeatherForecastDay
-                dayWeather={forecast.list[0]}
-                city={forecast.city}
-              />
-            </div>
+            {forecast.map(function(dailyForecast, index) {
+              if (index < 5) {
+                return (
+                  <div class="col" key={index}>
+                    <WeatherForecastDay
+                      dayWeather={dailyForecast}
+                      city={city}
+                    />
+                  </div>
+                );
+              }
+            })}
           </div>
         </div>
       </div>
