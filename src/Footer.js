@@ -11,6 +11,14 @@ export default function Footer() {
           >
             open-sourced on GitHub
           </a>
+          and hosted
+          <a
+            href="https://voluble-mandazi-96742e.netlify.app/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            on Netlify
+          </a>
         </small>
       </footer>
     </div>

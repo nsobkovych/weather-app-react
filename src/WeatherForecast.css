@@ -1,0 +1,37 @@
+.WeatherForecast {
+  text-align: center;
+}
+
+.WeatherForecast-inner {
+  border-top: none;
+}
+
+.WeatherForecast-image {
+  margin: 8px 0;
+}
+
+.WeatherForecast-temperature {
+  font-size: 0.8em;
+}
+
+.WeatherForecast-temperature span {
+  display: inline-block;
+}
+
+.WeatherForecast-temperature-max {
+  font-weight: 600;
+  padding-right: 0.3em;
+}
+
+.WeatherForecast-temperature-min {
+  font-weight: 200;
+}
+
+@media (max-width: 575.98px) {
+  .WeatherForecast-temperature {
+    font-size: 12px;
+  }
+  .WeatherForecast-temperature-max {
+    padding-right: 0;
+  }
+}

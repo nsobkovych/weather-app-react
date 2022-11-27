@@ -20,6 +20,7 @@ export default function WeatherInfo(props) {
               <div className="col align-self-end text-sm-end mb-3 mb-sm-0">
                 <WeatherIcon
                   icon={props.data.icon}
+                  size="64"
                   alt={props.data.mainDescription}
                 />
               </div>
