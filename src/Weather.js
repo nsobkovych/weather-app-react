@@ -9,30 +9,25 @@ export default function Weather(props) {
   let [city, setCity] = useState(props.city);
 
   function handleResponse(response) {
-    console.log(response);
     setWeatherData({
       ready: true,
-      coordinates: response.data.coord,
-      date: new Date(response.data.dt * 1000),
-      temperature: Math.round(response.data.main.temp),
-      mainDescription: response.data.weather[0].main,
-      description: response.data.weather[0].description,
-      clouds: response.data.clouds.all,
-      humidity: response.data.main.humidity,
+      coordinates: response.data.coordinates,
+      date: new Date(response.data.time * 1000),
+      temperature: Math.round(response.data.temperature.current),
+      description: response.data.condition.description,
+      humidity: response.data.temperature.humidity,
       windSpeed: response.data.wind.speed,
-      icon: response.data.weather[0].icon,
-      coords: response.data.coord,
-      city: response.data.name,
-      country: response.data.sys.country,
+      icon: response.data.condition.icon,
+      city: response.data.city,
     });
   }
 
   function search() {
-    const apiKey = "5ca7191e7c223ac438b06699f46c25b5";
-    let weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`;
+    const apiKey = "34317f7227tfoaf35280cf494d06abe3";
+    let weatherApiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
     axios
-      .get(`${weatherApiUrl}&appid=${apiKey}`)
+      .get(`${weatherApiUrl}`)
       .then(handleResponse)
       .catch(function (error) {
         if (error.response) {
@@ -107,7 +102,7 @@ export default function Weather(props) {
               </div>
 
               <WeatherInfo data={weatherData} />
-              <WeatherForecast coordinates={weatherData.coordinates} />
+              <WeatherForecast city={weatherData.city} />
             </div>
           </div>
         </div>

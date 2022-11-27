@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import WeatherForecastDay from "./WeatherForecastDay";
 import "./WeatherForecast.css";
@@ -6,30 +6,32 @@ import "./WeatherForecast.css";
 export default function WeatherForecast(props) {
   let [loaded, setLoaded] = useState(false);
   let [forecast, setForecast] = useState(null);
-  let [city, setCity] = useState(null);
+
+  useEffect(() => {
+    setLoaded(false);
+  }, [props.city]);
 
   function displayForecast(data) {
-    setForecast(data.list);
-    setCity(data.city);
+    setForecast(data.daily);
     setLoaded(true);
   }
 
   if (loaded) {
-    console.log("forecast", forecast);
     return (
       <div className="WeatherForecast">
         <div class="card-footer WeatherForecast-inner py-4 bg-transparent">
           <div class="row">
-            {forecast.map(function(dailyForecast, index) {
+            {forecast.map((dailyForecast, index) => {
               if (index < 5) {
                 return (
                   <div class="col" key={index}>
                     <WeatherForecastDay
                       dayWeather={dailyForecast}
-                      city={city}
                     />
                   </div>
                 );
+              } else {
+                return null;
               }
             })}
           </div>
@@ -37,11 +39,9 @@ export default function WeatherForecast(props) {
       </div>
     );
   } else {
-    const apiKey = "5ca7191e7c223ac438b06699f46c25b5";
-    let longitude = props.coordinates.lon;
-    let latitude = props.coordinates.lat;
+    const apiKey = "34317f7227tfoaf35280cf494d06abe3";
 
-    let forecastApiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+    let forecastApiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${props.city}&key=${apiKey}&units=metric`;
 
     axios
       .get(forecastApiUrl)

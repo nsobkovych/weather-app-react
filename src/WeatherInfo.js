@@ -2,7 +2,7 @@ import React from "react";
 import WeatherTemperature from "./WeatherTemperature";
 import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
-import { WiStrongWind, WiCloud, WiRaindrop } from "react-icons/wi";
+import { WiStrongWind, WiRaindrop } from "react-icons/wi";
 
 export default function WeatherInfo(props) {
   return (
@@ -11,7 +11,7 @@ export default function WeatherInfo(props) {
         <div className="row row-cols-1 row-cols-sm-2 align-items-end">
           <div className="col text-sm-start mb-3 mb-sm-0">
             <h1 className="city">
-              {props.data.city}, {props.data.country}
+              {props.data.city}
             </h1>
             <FormattedDate date={props.data.date} />
           </div>
@@ -20,8 +20,8 @@ export default function WeatherInfo(props) {
               <div className="col align-self-end text-sm-end mb-3 mb-sm-0">
                 <WeatherIcon
                   icon={props.data.icon}
-                  size="64"
-                  alt={props.data.mainDescription}
+                  size={64}
+                  alt={props.data.description}
                 />
               </div>
               <div className="col text-sm-start ps-sm-0">
@@ -37,10 +37,6 @@ export default function WeatherInfo(props) {
             <span className="w-wind">
               {Math.round(props.data.windSpeed)}m/s
             </span>
-          </span>
-          <span className="badge badge-custom bg-transparent">
-            <WiCloud />
-            <span className="w-clouds">{props.data.clouds}%</span>
           </span>
           <span className="badge badge-custom bg-transparent">
             <WiRaindrop />
