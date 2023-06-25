@@ -34,7 +34,7 @@ Note: The app fetches weather data in real-time using the api.shecodes.io. Ensur
 
 
 ## Screenshot
-![Screenshot of the Weather Forecast App (React)](screenshot.png)
+![Screenshot of the Weather Forecast App (React)](public/Screenshot.png)
 
 
 
