@@ -1,6 +1,6 @@
 # Weather Forecast App (React)
 
-The Weather Forecast App is a dynamic web application developed using React. It provides accurate and detailed weather information for the entered city, covering the next five days. With animated icons representing the weather conditions, this app offers an engaging and user-friendly experience.
+The Weather Forecast App is a dynamic web application developed using React. It provides accurate and detailed weather information for the entered city, covering the next five days. With animated icons representing the weather conditions, this app offers an engaging and user-friendly experience. The Weather Forecast App is hosted on [Netlify](https://voluble-mandazi-96742e.netlify.app/).
 
 
 ## Features:
